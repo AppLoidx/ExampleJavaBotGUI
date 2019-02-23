@@ -5,6 +5,7 @@ import org.json.simple.JSONValue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
@@ -12,9 +13,12 @@ import java.util.Map;
  */
 public class Commander {
 
+    private static HashMap<Integer, String> notificationsList = new HashMap<>();
+    private SocketClient socketClient = new SocketClient();
+
     public ArrayList<Map<String, String>> getNotificationsMapList(){
 
-        SocketClient socketClient = new SocketClient();
+
         ArrayList<Map<String, String>> mapArray = new ArrayList<>();
 
         Object response = JSONValue.parse(socketClient.getResponse("note -s"));
@@ -33,7 +37,14 @@ public class Commander {
         return mapArray;
     }
 
+    public String deleteNotification(int hashCode){
+        String id = notificationsList.get(hashCode);
+        return socketClient.getResponse("note -d " + id);
+    }
+
     public ArrayList<String> getNotificationsList(){
+        notificationsList.clear();
+
         ArrayList<Map<String, String>> notifications = getNotificationsMapList();
         ArrayList<String> response = new ArrayList<>();
 
@@ -64,8 +75,13 @@ public class Commander {
                     "AuthorID: " + authorID + "\n" +
                     "id: " + id;
             response.add(s);
+            notificationsList.put(s.hashCode(), id);
         }
 
         return response;
+    }
+
+    public String addNotification(String notification){
+        return socketClient.getResponse("note -a " + notification);
     }
 }

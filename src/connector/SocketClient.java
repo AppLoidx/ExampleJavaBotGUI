@@ -11,8 +11,10 @@ public class SocketClient {
 
     private static BufferedReader in; // поток чтения из сокета
     private static BufferedWriter out; // поток записи в сокет
-    private final String META_DATA_IDENTIFICATION = "--#";
-    String additionalData = META_DATA_IDENTIFICATION + "program";
+
+    private final String META_DATA_IDENTIFICATION = " --#";
+    private String additionalData = META_DATA_IDENTIFICATION + "program " +
+            META_DATA_IDENTIFICATION + "user_id " + 255396611;
     public String getResponse(String request) {
         request = request + " " + additionalData;
 
@@ -25,7 +27,7 @@ public class SocketClient {
                 // писать туда же
                 out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 
-                out.write(request + "\n"); // отправляем сообщение на сервер
+                out.write(request.replace("\n","^") + " \n"); // отправляем сообщение на сервер
                 out.flush();
                 String responsePart;
                 StringBuilder sb = new StringBuilder();

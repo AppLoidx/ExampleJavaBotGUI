@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -26,6 +27,29 @@
       <AnchorPane layoutX="421.0" layoutY="359.0" prefHeight="34.0" prefWidth="163.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="16.0">
          <children>
             <Button fx:id="updateButton" mnemonicParsing="false" onAction="#update" stylesheets="@../../resources/css/dark-button.css" text="Обновить" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="460.0" prefHeight="36.0" prefWidth="178.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="16.0">
+         <children>
+            <Button fx:id="deleteButton" alignment="CENTER" mnemonicParsing="false" onAction="#delete" stylesheets="@../../resources/css/dark-button.css" text="Удалить" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="185.0" layoutY="398.0" prefHeight="59.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="180.0">
+         <children>
+            <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="1.0" mnemonicParsing="false" onAction="#add" prefHeight="58.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" stylesheets="@../../resources/css/plus-img-button.css" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fx:id="addButtonImage" fitHeight="48.0" fitWidth="68.0">
+                     <image>
+                        <Image url="@../../resources/img/hospital26.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor></Button>
          </children>
       </AnchorPane>
    </children>
